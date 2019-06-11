@@ -1,0 +1,28 @@
+package dealim.cs.siren;
+
+import java.util.List;
+
+import javax.inject.Inject;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import dealim.cs.siren.bean.TestBean;
+import dealim.cs.siren.sevice.TestService;
+
+
+@RestController
+public class Test2Controller {
+	@Inject
+	TestService service;
+	
+    //private static Logger logger = LoggerFactory.getLogger(HomeController2.class);
+ 
+    @RequestMapping(value="/test2",method=RequestMethod.GET)
+    public List<TestBean> tester() throws Exception {
+   //MappingJackson2HttpMessageConverter 를 통해서 application/json 컨텐츠 타입을 리턴
+        return service.user_db();
+    }
+    
+}

@@ -1,0 +1,52 @@
+package dealim.cs.siren;
+
+import java.util.List;
+
+import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
+
+import org.json.simple.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import dealim.cs.siren.bean.TestBean;
+import dealim.cs.siren.sevice.TestService;
+
+
+@RestController
+public class Test2Controller {
+	@Inject
+	TestService service;
+	@Autowired 
+	TestBean testbean;
+    //private static Logger logger = LoggerFactory.getLogger(HomeController2.class);
+ 
+	@RequestMapping(value="/test2",method=RequestMethod.GET)
+    public JSONObject tester(@RequestBody TestBean test,
+            HttpSession session) throws Exception {
+   //MappingJackson2HttpMessageConverter 를 통해서 application/json 컨텐츠 타입을 리턴
+    	
+    	System.out.println(test.getUserid());
+    	System.out.println(test.getUserid());
+    	
+    	JSONObject json = new JSONObject();
+    	try{
+    		List<TestBean> list = service.user_login(testbean);
+    		for (TestBean testBean : list) {
+    			json.put("userid", testBean.getUserid());
+    			json.put("user_password", testBean.getUser_password());
+    		}
+    		
+    			
+    	}catch(Exception e){
+    		e.printStackTrace();
+    	}
+    	
+    	
+        return json;
+    }
+    
+}
