@@ -15,7 +15,7 @@ import dealim.cs.siren.bean.TestBean;
 public class EmailSendController {
 	
 
-	@RequestMapping(value="/emailoverlap",method= {RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(value="/emailsend",method= {RequestMethod.GET,RequestMethod.POST})
     public @ResponseBody JSONObject tester(@RequestBody TestBean test) throws Exception{
 		
 		
