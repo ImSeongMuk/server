@@ -45,6 +45,12 @@ public class TestDAOImpl implements TestDAO{//사용할 *Mapper.xml의 namespace명
 		// TODO Auto-generated method stub
 		sqlSession.update(namespace+".update_detail", vo);
 	}
+	@Override
+	public void email_send(TestBean vo) throws Exception {
+		// TODO Auto-generated method stub
+		sqlSession.update(namespace+".email_send", vo);
+		
+	}
 	
 	
 }

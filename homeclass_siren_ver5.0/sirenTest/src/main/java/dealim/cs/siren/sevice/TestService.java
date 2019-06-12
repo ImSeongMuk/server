@@ -11,4 +11,5 @@ public interface TestService {
 	public List<TestBean> userinfo(TestBean vo) throws Exception;
 	public List<TestBean> emailoverlap(TestBean vo) throws Exception;
 	public void update_detail(TestBean vo) throws Exception;
+	public void email_send(TestBean vo) throws Exception;
 }

@@ -8,7 +8,9 @@ public class TestBean {
 	private String name;
 	private String tel;
 	private String date_of_birth;
+	
 	/////////////////////////////
+	
 	private String medicine1;
 	private String medicine2;
 	private String medicine3;

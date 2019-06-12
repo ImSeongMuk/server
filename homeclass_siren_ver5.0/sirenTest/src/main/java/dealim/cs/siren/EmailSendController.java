@@ -4,6 +4,8 @@ import javax.inject.Inject;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 
+import java.util.UUID; 
+
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -19,32 +21,36 @@ import dealim.cs.siren.sevice.TestService;
 
 @Controller
 public class EmailSendController {
+	
 	@Inject
 	TestService service;
 	
 	@Autowired
 	private JavaMailSender mailSender;
 	
-	
-	// mailForm
-	@RequestMapping(value = "/mail/mailForm")
-	public String mailForm() {
-
-		return "/mail/mailForm";
-	}
-
 	// mailSending 코드
 	@RequestMapping(value = "/emailsend", method = { RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody JSONObject tester(@RequestBody TestBean test) throws Exception {
 		System.out.println("email send");
 		
 		JSONObject json = new JSONObject();
-		
+		String uuid = UUID.randomUUID().toString().replaceAll("-", ""); // -를 제거해 주었다. 
+        uuid = uuid.substring(0, 10); //uuid를 앞에서부터 10자리 잘라줌. 
+        
 		String setfrom = "0326gg@gmail.com"; // 보내는 사람 이메일
-		String tomail = "";// request.getParameter("tomail"); // 받는 사람 이메일
-		String title = "";// request.getParameter("title"); // 제목
-		String content = "임시비밀번호: ?? 입니다."; // 내용
-
+		String tomail = test.getEmail();// request.getParameter("tomail"); // 받는 사람 이메일
+		String title = "삐용삐용 임시 비밀번호";// request.getParameter("title"); // 제목
+		String content = "임시 비밀번호는 "+uuid+" 입니다."; // 내용
+		test.setUser_password(uuid);
+		
+		try {//임시 비밀번호 db에 저장
+        	service.email_send(test);
+        	json.put("result","T");
+		} catch (Exception e) {	
+			System.out.println(e);
+			json.put("result","F");
+		}
+		
 		try {
 			MimeMessage message = mailSender.createMimeMessage();
 			MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
@@ -55,8 +61,10 @@ public class EmailSendController {
 			messageHelper.setText(content); // 메일 내용
 
 			mailSender.send(message);
+			System.out.println("email success");
 		} catch (Exception e) {
 			System.out.println(e);
+			System.out.println("email fail");
 		}
 
 		return json;

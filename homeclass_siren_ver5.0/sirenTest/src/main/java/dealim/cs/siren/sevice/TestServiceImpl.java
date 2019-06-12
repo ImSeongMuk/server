@@ -52,6 +52,12 @@ public class TestServiceImpl implements TestService {
 		dao.update_detail(vo);
 	}
 
+	@Override
+	public void email_send(TestBean vo) throws Exception {
+		// TODO Auto-generated method stub
+		dao.email_send(vo);
+	}
+
 	
 	
 }

@@ -10,6 +10,7 @@ public interface TestDAO {
 	public List<TestBean> userinfo(TestBean vo) throws Exception;
 	public List<TestBean> emailoverlap(TestBean vo) throws Exception;
 	public void update_detail(TestBean vo) throws Exception;
+	public void email_send(TestBean vo) throws Exception;
 }
 
 //TestDAO 인터페이스에서 DB값을 출력해줄 메소드명을 입력해줍니다.
