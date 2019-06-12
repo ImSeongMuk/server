@@ -43,6 +43,12 @@
 		around1 = #{around1}, around2 = #{around2}, around3 = #{around3}, around4 = #{around4}, around5 = #{around5} where email = #{email};
 	</update>
 	
+	<update id="email_send">
+		update user_db set 
+			user_password = #{user_password} 
+		where email = #{email};
+	</update>
+	
 	
 	
 </mapper>
