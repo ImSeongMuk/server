@@ -1,5 +1,0 @@
-package dealim.cs.siren.email;
-
-public class MailServiceImpl {
-
-}

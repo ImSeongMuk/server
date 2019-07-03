@@ -34,31 +34,11 @@ public class UserinfoController {
 			list = service.userinfo(test);
 			for (TestBean testBean : list) {
 				json.put("email", testBean.getEmail());
-				json.put("user_password", testBean.getUser_password());
+				json.put("password", testBean.getPassword());
 				json.put("name", testBean.getName());
-				json.put("tel", testBean.getTel());
-				json.put("date_of_birth", testBean.getDate_of_birth());
-				
-				json.put("medicine1", testBean.getMedicine1());
-				json.put("medicine2", testBean.getMedicine2());
-				json.put("medicine3", testBean.getMedicine3());
-				json.put("medicine4", testBean.getMedicine4());
-				json.put("medicine5", testBean.getMedicine5());
-				
-				json.put("weight", testBean.getWeight());
-				
+				json.put("phone", testBean.getPhone());
+				json.put("birth", testBean.getBirth());
 				json.put("hospital", testBean.getHospital());
-				
-				json.put("disease2", testBean.getDisease2());
-				json.put("disease3", testBean.getDisease3());
-				json.put("disease4", testBean.getDisease4());
-				json.put("disease5", testBean.getDisease5());
-				
-				json.put("around1", testBean.getAround1());
-				json.put("around2", testBean.getAround2());
-				json.put("around3", testBean.getAround3());
-				json.put("around4", testBean.getAround4());
-				json.put("around5", testBean.getAround5());
 				
 			}
 		} catch (Exception e) {

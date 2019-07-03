@@ -32,7 +32,7 @@ public class LoginController {
 			if(!list.isEmpty()) {
 				for (TestBean testBean : list) {
 					json.put("email", testBean.getEmail());
-					json.put("user_password", testBean.getUser_password());
+					json.put("password", testBean.getPassword());
 					
 				}
 				json.put("result","T");

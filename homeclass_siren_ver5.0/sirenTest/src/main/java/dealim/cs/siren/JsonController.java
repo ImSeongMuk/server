@@ -30,7 +30,7 @@ public class JsonController {
 		list = service.user_db();
 		for (TestBean testBean : list) {
 			json.put("userid", testBean.getEmail());
-			json.put("user_password", testBean.getUser_password());
+			json.put("user_password", testBean.getPassword());
 		}
 		
 			

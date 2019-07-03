@@ -5,6 +5,7 @@
     
 <configuration>
 	<typeAliases>
-		<typeAlias alias="User_db" type="dealim.cs.siren.bean.TestBean" />
+		<typeAlias alias="Userinfo" type="dealim.cs.siren.bean.TestBean" />
+		<typeAlias alias="Diseaseconn" type="dealim.cs.siren.bean.DiseaseConnect" />
 	</typeAliases>
 </configuration>

@@ -3,7 +3,7 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<title>홈화면</title>
+	<title>HOME</title>
 </head>
 <body>
 <h1>

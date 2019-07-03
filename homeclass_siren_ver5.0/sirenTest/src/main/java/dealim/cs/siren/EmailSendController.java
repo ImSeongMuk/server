@@ -41,7 +41,7 @@ public class EmailSendController {
 		String tomail = test.getEmail();	// request.getParameter("tomail"); // 받는 사람 이메일
 		String title = "삐용삐용 임시 비밀번호";	// request.getParameter("title"); // 제목
 		String content = "임시 비밀번호는 "+uuid+" 입니다."; // 내용
-		test.setUser_password(uuid);
+		test.setPassword(uuid);
 		
 		try {//임시 비밀번호 db에 저장
         	service.email_send(test);
