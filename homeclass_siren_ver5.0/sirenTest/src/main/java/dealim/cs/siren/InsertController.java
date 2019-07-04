@@ -19,8 +19,6 @@ public class InsertController {
     
 	@Inject
     TestService service;
-    //@RequestMapping(value = "/insert",method = RequestMethod.POST )
-    //public String insertControllerPost(TestBean test, Model model) throws Exception
     
     @RequestMapping(value="/insert",method= {RequestMethod.GET,RequestMethod.POST})
     public @ResponseBody JSONObject tester(@RequestBody TestBean test) throws Exception{

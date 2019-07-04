@@ -11,12 +11,12 @@
 <body>
 	<table>
 		<tr>
-			<td>유저번호</td>
-			<td>이메일   </td>
-			<td>비밀번호</td>
-			<td>이름 </td>
-			<td>생일 </td>
-			<td>휴대전화 </td>
+			<td>유저번호  </td>
+			<td>이메일     </td>
+			<td>비밀번호  </td>
+			<td>이름         </td>
+			<td>생일         </td>
+			<td>휴대전화   </td>
 			<td>자주가는병원 </td>
 		</tr>
 		<c:forEach items="${list}" var="userinfo">

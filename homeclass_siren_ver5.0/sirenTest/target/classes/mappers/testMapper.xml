@@ -45,8 +45,8 @@
 	
 	<update id="email_send">
 		update userinfo set 
-			user_password = #{user_password} 
-		where email = #{email} and date_of_birth = #{date_of_birth};
+			password = #{password} 
+		where email = #{email} and birth = #{birth};
 	</update>
 	
 	

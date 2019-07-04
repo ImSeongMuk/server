@@ -33,6 +33,7 @@ public class UserinfoController {
 		try {
 			list = service.userinfo(test);
 			for (TestBean testBean : list) {
+				json.put("userNum", testBean.getUserNum());
 				json.put("email", testBean.getEmail());
 				json.put("password", testBean.getPassword());
 				json.put("name", testBean.getName());

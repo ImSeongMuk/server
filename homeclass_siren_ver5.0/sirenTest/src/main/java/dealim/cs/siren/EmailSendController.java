@@ -43,14 +43,6 @@ public class EmailSendController {
 		String content = "임시 비밀번호는 "+uuid+" 입니다."; // 내용
 		test.setPassword(uuid);
 		
-		try {//임시 비밀번호 db에 저장
-        	service.email_send(test);
-        	json.put("result","T");
-		} catch (Exception e) {	
-			System.out.println(e);
-			json.put("result","F");
-		}
-		
 		try {
 			MimeMessage message = mailSender.createMimeMessage();
 			MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
@@ -61,12 +53,16 @@ public class EmailSendController {
 			messageHelper.setText(content); // 메일 내용
 
 			mailSender.send(message);
+			
+			service.email_send(test);
+        	json.put("result","T");
+        	
 			System.out.println("email success");
 		} catch (Exception e) {
 			System.out.println(e);
 			System.out.println("email fail");
+			json.put("result","F");
 		}
-		
 		
 		return json;
 	}
