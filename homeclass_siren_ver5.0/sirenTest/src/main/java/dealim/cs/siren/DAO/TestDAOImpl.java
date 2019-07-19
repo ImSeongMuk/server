@@ -4,6 +4,8 @@ import java.util.List;
 import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
+
+import dealim.cs.siren.bean.DiseaseConnect;
 import dealim.cs.siren.bean.TestBean;
 
 @Repository//DAO를 스프링에 인식 시킴 //DAO라고 명시 (DAO를 스프링에서 인식시켜줌)
@@ -50,6 +52,11 @@ public class TestDAOImpl implements TestDAO{//사용할 *Mapper.xml의 namespace명
 		// TODO Auto-generated method stub
 		sqlSession.update(namespace+".email_send", vo);
 		
+	}
+	@Override
+	public List<DiseaseConnect> userDisease(DiseaseConnect vo) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(namespace+".userDisease", vo);
 	}
 	
 	

@@ -4,6 +4,7 @@ import java.util.List;
 import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 import dealim.cs.siren.DAO.TestDAO;
+import dealim.cs.siren.bean.DiseaseConnect;
 import dealim.cs.siren.bean.TestBean;
 
 
@@ -56,6 +57,12 @@ public class TestServiceImpl implements TestService {
 	public void email_send(TestBean vo) throws Exception {
 		// TODO Auto-generated method stub
 		dao.email_send(vo);
+	}
+
+	@Override
+	public List<DiseaseConnect> userDisease(DiseaseConnect vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.userDisease(vo);
 	}
 
 	

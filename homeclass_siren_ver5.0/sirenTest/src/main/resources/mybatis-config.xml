@@ -6,6 +6,7 @@
 <configuration>
 	<typeAliases>
 		<typeAlias alias="Userinfo" type="dealim.cs.siren.bean.TestBean" />
-		<typeAlias alias="Diseaseconn" type="dealim.cs.siren.bean.DiseaseConnect" />
+		<typeAlias alias="DiseaseConn" type="dealim.cs.siren.bean.DiseaseConnect" />
+		<typeAlias alias="MedicineConn" type="dealim.cs.siren.bean.MedicineConnect" />
 	</typeAliases>
 </configuration>
