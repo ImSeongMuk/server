@@ -13,6 +13,12 @@
         
         이렇게 해야 한다.
     -->
+    <!--약 리스트 -->
+    <select id = 'userMedicine' resultType="MedicineConnect">
+    	select mc.userNum,mc.diseaseCode,mc.medicineCode,m.medicineName 
+		from medicineconn mc, medicine m 
+		where mc.medicineCode=m.medicineCode and mc.userNum = #{userNum} and diseaseCode = #{diseaseCode};
+    </select>
     <!--병 리스트 -->
     <select id = 'userDisease' resultType="DiseaseConn">
     	 select dc.userNum,d.diseaseCode,d.diseaseName

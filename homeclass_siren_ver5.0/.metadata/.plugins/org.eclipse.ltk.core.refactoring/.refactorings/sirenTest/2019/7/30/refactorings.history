@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Encapsulate field &apos;dealim.cs.siren.bean.MedicineConnect.medicineName&apos; in &apos;dealim.cs.siren.bean.MedicineConnect&apos;&#x0D;&#x0A;- Original project: &apos;sirenTest&apos;&#x0D;&#x0A;- Original element: &apos;dealim.cs.siren.bean.MedicineConnect.medicineName&apos;&#x0D;&#x0A;- Getter method name: &apos;getMedicineName&apos;&#x0D;&#x0A;- Setter method name: &apos;setMedicineName&apos;&#x0D;&#x0A;- Field visibility: &apos;public&apos;&#x0D;&#x0A;- Use getter and setter methods in declaring type" comments="false" declaring="true" description="Encapsulate field &apos;medicineName&apos;" flags="589830" getter="getMedicineName" id="org.eclipse.jdt.ui.self.encapsulate" input="/src\/main\/java&lt;dealim.cs.siren.bean{MedicineConnect.java[MedicineConnect^medicineName" insertion="5" setter="setMedicineName" stamp="1563759877587" version="1.0" visibility="1"/>
+</session>

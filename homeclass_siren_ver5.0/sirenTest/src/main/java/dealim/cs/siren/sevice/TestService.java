@@ -3,6 +3,7 @@ package dealim.cs.siren.sevice;
 import java.util.List;
 import dealim.cs.siren.bean.TestBean;
 import dealim.cs.siren.bean.DiseaseConnect;
+import dealim.cs.siren.bean.MedicineConnect;
 
 public interface TestService {
 	public List<TestBean> user_db() throws Exception;
@@ -13,4 +14,5 @@ public interface TestService {
 	public void update_detail(TestBean vo) throws Exception;
 	public void email_send(TestBean vo) throws Exception;
 	public List<DiseaseConnect> userDisease(DiseaseConnect vo) throws Exception;
+	public List<MedicineConnect> userMedicine(DiseaseConnect vo) throws Exception;
 }

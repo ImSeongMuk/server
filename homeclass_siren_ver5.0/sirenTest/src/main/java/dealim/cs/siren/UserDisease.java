@@ -13,27 +13,39 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import dealim.cs.siren.bean.TestBean;
 import dealim.cs.siren.bean.DiseaseConnect;
+import dealim.cs.siren.bean.MedicineConnect;
 import dealim.cs.siren.sevice.TestService;
+
 @Controller
 public class UserDisease {
 	@Inject
 	TestService service;
-	@RequestMapping(value="/email_login",method= {RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(value="/diseaseList",method= {RequestMethod.GET,RequestMethod.POST})
     public @ResponseBody JSONObject tester(@RequestBody DiseaseConnect test) throws Exception{ 
     	System.out.println("login");
     	JSONObject json = new JSONObject();
     	System.out.println(test.getUserNum());
     	List<DiseaseConnect> list;
+    	List<MedicineConnect> list2;
+    	int i=0;
     	
 		try {
 			list = service.userDisease(test);
 			if(!list.isEmpty()) {
 				for (DiseaseConnect diseaseConnect : list) {
-					json.put("userNum", diseaseConnect.getUserNum());
-					json.put("diseaseCode", diseaseConnect.getDiseaseCode());
-					json.put("diseaseName", diseaseConnect.getDiseaseName());
+					i++;
+					//diseaseCode를 받아왔스니까 이를 이용하여 medicine 데이터를 받아올수있다
+//					json.put("userNum", diseaseConnect.getUserNum());
+//					json.put("diseaseCode", diseaseConnect.getDiseaseCode());
+//					json.put("diseaseName", diseaseConnect.getDiseaseName());
+					//병코드에 있는
+					//약 리스트 받아오기
+					list2 = service.userMedicine(diseaseConnect);
+					json.put("medicine"+i,list2);
+					
 				}
 				json.put("result","T");
+				json.put("number",i);
 			}
 			else {
 				json.put("result","F");

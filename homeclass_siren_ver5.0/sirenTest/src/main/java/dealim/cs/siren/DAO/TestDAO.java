@@ -3,6 +3,7 @@ package dealim.cs.siren.DAO;
 import java.util.List;
 import dealim.cs.siren.bean.TestBean;
 import dealim.cs.siren.bean.DiseaseConnect;
+import dealim.cs.siren.bean.MedicineConnect;
 
 public interface TestDAO {
 	public List<TestBean> user_db() throws Exception;
@@ -13,6 +14,7 @@ public interface TestDAO {
 	public void update_detail(TestBean vo) throws Exception;
 	public void email_send(TestBean vo) throws Exception;
 	public List<DiseaseConnect> userDisease(DiseaseConnect vo) throws Exception;
+	public List<MedicineConnect> userMedicine(DiseaseConnect vo) throws Exception;
 }
 
 //TestDAO 인터페이스에서 DB값을 출력해줄 메소드명을 입력해줍니다.

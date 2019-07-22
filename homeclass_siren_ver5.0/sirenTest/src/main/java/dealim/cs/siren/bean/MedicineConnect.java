@@ -4,6 +4,7 @@ public class MedicineConnect {
 	private int userNum;
 	private String diseaseCode;
 	private String medicineCode;
+	private String medicineName;
 	
 	public int getUserNum() {
 		return userNum;
@@ -22,6 +23,12 @@ public class MedicineConnect {
 	}
 	public void setMedicineCode(String medicineCode) {
 		this.medicineCode = medicineCode;
+	}
+	public String getMedicineName() {
+		return medicineName;
+	}
+	public void setMedicineName(String medicineName) {
+		this.medicineName = medicineName;
 	}
 }
 
