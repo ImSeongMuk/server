@@ -14,7 +14,7 @@
         이렇게 해야 한다.
     -->
     <!--약 리스트 -->
-    <select id = 'userMedicine' resultType="MedicineConnect">
+    <select id = 'userMedicine' resultType="MedicineConn">
     	select mc.userNum,mc.diseaseCode,mc.medicineCode,m.medicineName 
 		from medicineconn mc, medicine m 
 		where mc.medicineCode=m.medicineCode and mc.userNum = #{userNum} and diseaseCode = #{diseaseCode};
