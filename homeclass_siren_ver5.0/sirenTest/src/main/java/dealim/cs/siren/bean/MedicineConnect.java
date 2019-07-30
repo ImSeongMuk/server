@@ -3,6 +3,7 @@ package dealim.cs.siren.bean;
 public class MedicineConnect {
 	private int userNum;
 	private String diseaseCode;
+	private String disease;
 	private String medicineCode;
 	private String medicine;
 	
@@ -18,6 +19,12 @@ public class MedicineConnect {
 	public void setDiseaseCode(String diseaseCode) {
 		this.diseaseCode = diseaseCode;
 	}
+	public String getDisease() {
+		return disease;
+	}
+	public void setDisease(String disease) {
+		this.disease = disease;
+	}
 	public String getMedicineCode() {
 		return medicineCode;
 	}
@@ -30,5 +37,6 @@ public class MedicineConnect {
 	public void setMedicine(String medicine) {
 		this.medicine = medicine;
 	}
+	
 }
 

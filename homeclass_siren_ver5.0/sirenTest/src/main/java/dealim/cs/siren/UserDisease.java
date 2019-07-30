@@ -42,8 +42,8 @@ public class UserDisease {
 					System.out.println("약리스트 성공");
 					json.put("medicine"+i,list2);
 					for (MedicineConnect testMedicine : list2) {
-						System.out.println(testMedicine);
-//						json.put("userNum", testBean.getUserNum());
+						//System.out.println(testMedicine);
+						json.put(testMedicine.getDiseaseCode(), testMedicine.getDisease());
 					}
 					
 				}

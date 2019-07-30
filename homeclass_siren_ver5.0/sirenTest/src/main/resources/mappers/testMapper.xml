@@ -15,9 +15,9 @@
     -->
     <!--약 리스트 -->
     <select id = 'userMedicine' resultType="MedicineConn">
-    	select mc.userNum,mc.diseaseCode,mc.medicineCode,m.medicine
-		from medicineConn mc, medicine m 
-		where mc.medicineCode=m.medicineCode and mc.userNum = #{userNum} and mc.diseaseCode = #{diseaseCode};
+		select mc.userNum,mc.diseaseCode,d.disease,mc.medicineCode,m.medicine
+		from medicineConn mc, medicine m ,disease d 
+		where mc.medicineCode=m.medicineCode and mc.userNum = #{userNum} and mc.diseaseCode = #{diseaseCode} and d.diseaseCode = mc.diseaseCode ;
 		
     </select>
     <!--병 리스트 -->
