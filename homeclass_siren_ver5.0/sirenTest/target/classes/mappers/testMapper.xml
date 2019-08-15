@@ -13,6 +13,51 @@
         
         이렇게 해야 한다.
     -->
+    <!--보호자 삭제 -->
+    <delete id = "protectDelete">
+   	 	delete from protectorTel
+		where userNum = #{userNum} and protectCode =#{protectCode};
+    </delete>
+    <!--보호자 수정 -->
+    <update id="protectUpdate">
+		update protectorTel set 
+		protectName = #{protectName} , protectRelation = #{protectRelation}, protectPhone = #{protectPhone}
+		where userNum = #{userNum} and protectCode = #{protectCode};
+	</update>
+    <!--보호자 추가 -->
+    <insert id="protectInsert">
+	     insert into protectorTel(userNum,protectName,protectRelation,protectPhone)
+	     values(#{userNum},#{protectName},#{protectRelation},#{protectPhone});
+	</insert>
+    <!--보호자  select-->
+    <select id = 'protectInfo' resultType="ProtectorTel">
+		select * 
+		from protectorTel
+		where userNum = #{userNum};
+    </select>
+    
+    <!--디테일 삭제 -->
+    <delete id = "detailDelete">
+   	 	delete from detail
+		where userNum = #{userNum} and detailCode =#{detailCode};
+    </delete>
+    <!--디테일 수정 -->
+    <update id="detailUpdate">
+		update detail set 
+		diseaseName = #{diseaseName} , detailContent = #{detailContent}
+		where userNum = #{userNum} and detailCode = #{detailCode};
+	</update>
+    <!--디테일 추가 -->
+    <insert id="detailInsert">
+	     insert into detail(userNum,diseaseName,detailContent)
+	     values(#{userNum},#{diseaseName},#{detailContent});
+	</insert>
+    <!--디테일  select-->
+    <select id = 'detailInfo' resultType="Detail">
+		select * 
+		from detail
+		where userNum = #{userNum};
+    </select>
     <!--약 리스트 -->
     <select id = 'userMedicine' resultType="MedicineConn">
 		select mc.userNum,mc.diseaseCode,d.disease,mc.medicineCode,m.medicine

@@ -1,0 +1,8 @@
+package dealim.cs.siren;
+
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class ProtectDelete {
+
+}

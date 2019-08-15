@@ -1,0 +1,15 @@
+package dealim.cs.siren.bean;
+
+public class ProtectorTel {
+	private int userNum;
+	private String protectCode;
+	private String protectName;
+	private String protectRelation;
+	private String protectPhone;
+	public String getProtectCode() {
+		return protectCode;
+	}
+	public void setProtectCode(String protectCode) {
+		this.protectCode = protectCode;
+	}	
+}

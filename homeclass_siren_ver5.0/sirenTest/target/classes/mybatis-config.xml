@@ -8,5 +8,7 @@
 		<typeAlias alias="Userinfo" type="dealim.cs.siren.bean.TestBean" />
 		<typeAlias alias="DiseaseConn" type="dealim.cs.siren.bean.DiseaseConnect" />
 		<typeAlias alias="MedicineConn" type="dealim.cs.siren.bean.MedicineConnect" />
+		<typeAlias alias="Detail" type="dealim.cs.siren.bean.Detail" />
+		<typeAlias alias="ProtectorTel" type="dealim.cs.siren.bean.ProtectorTel" />
 	</typeAliases>
 </configuration>

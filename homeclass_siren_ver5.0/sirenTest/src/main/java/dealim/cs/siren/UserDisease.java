@@ -22,7 +22,6 @@ public class UserDisease {
 	TestService service;
 	@RequestMapping(value="/diseaseList",method= {RequestMethod.GET,RequestMethod.POST})
     public @ResponseBody JSONObject tester(@RequestBody DiseaseConnect test) throws Exception{ 
-    	System.out.println("login");
     	JSONObject json = new JSONObject();
     	System.out.println(test.getUserNum());
     	List<DiseaseConnect> list;
@@ -41,10 +40,10 @@ public class UserDisease {
 					list2 = service.userMedicine(diseaseConnect);
 					System.out.println("약리스트 성공");
 					json.put("medicine"+i,list2);
-					for (MedicineConnect testMedicine : list2) {
-						//System.out.println(testMedicine);
-						json.put(testMedicine.getDiseaseCode(), testMedicine.getDisease());
-					}
+					//for (MedicineConnect testMedicine : list2) {
+					//	System.out.println(testMedicine);
+					//	json.put("userNum", testBean.getUserNum());
+					//}
 					
 				}
 				json.put("result","T");

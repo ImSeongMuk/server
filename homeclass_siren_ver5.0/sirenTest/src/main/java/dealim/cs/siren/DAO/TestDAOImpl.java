@@ -7,7 +7,9 @@ import org.springframework.stereotype.Repository;
 
 import dealim.cs.siren.bean.DiseaseConnect;
 import dealim.cs.siren.bean.MedicineConnect;
+import dealim.cs.siren.bean.ProtectorTel;
 import dealim.cs.siren.bean.TestBean;
+import dealim.cs.siren.bean.Detail;
 
 @Repository//DAO를 스프링에 인식 시킴 //DAO라고 명시 (DAO를 스프링에서 인식시켜줌)
 public class TestDAOImpl implements TestDAO{//사용할 *Mapper.xml의 namespace명
@@ -63,6 +65,45 @@ public class TestDAOImpl implements TestDAO{//사용할 *Mapper.xml의 namespace명
 	public List<MedicineConnect> userMedicine(DiseaseConnect vo) throws Exception {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(namespace+".userMedicine", vo);
+	}
+	@Override
+	public List<Detail> detailInfo(Detail vo) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(namespace+".detailInfo", vo);
+	}
+	@Override
+	public void detailUpdate(Detail vo) throws Exception {
+		// TODO Auto-generated method stub
+		sqlSession.update(namespace+".detailUpdate", vo);
+	}
+	@Override
+	public void detailInsert(Detail vo) throws Exception {
+		// TODO Auto-generated method stub
+		sqlSession.insert(namespace+".detailInsert", vo);
+	}
+	@Override
+	public void detailDelete(Detail vo) throws Exception {
+		// TODO Auto-generated method stub
+		sqlSession.delete(namespace+".detailDelete", vo);
+	}
+	@Override
+	public List<ProtectorTel> protectInfo(ProtectorTel vo) throws Exception {
+		return sqlSession.selectList(namespace+".protectInfo", vo);
+	}
+	@Override
+	public void protectUpdate(ProtectorTel vo) throws Exception {
+		// TODO Auto-generated method stub
+		sqlSession.update(namespace+".protectUpdate", vo);
+	}
+	@Override
+	public void protectInsert(ProtectorTel vo) throws Exception {
+		// TODO Auto-generated method stub
+		sqlSession.insert(namespace+".protectInsert", vo);
+	}
+	@Override
+	public void protectDelete(ProtectorTel vo) throws Exception {
+		// TODO Auto-generated method stub
+		sqlSession.delete(namespace+".protectDelete", vo);
 	}
 	
 	

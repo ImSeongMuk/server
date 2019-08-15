@@ -6,7 +6,9 @@ import org.springframework.stereotype.Service;
 import dealim.cs.siren.DAO.TestDAO;
 import dealim.cs.siren.bean.DiseaseConnect;
 import dealim.cs.siren.bean.MedicineConnect;
+import dealim.cs.siren.bean.ProtectorTel;
 import dealim.cs.siren.bean.TestBean;
+import dealim.cs.siren.bean.Detail;
 
 
 
@@ -70,6 +72,54 @@ public class TestServiceImpl implements TestService {
 	public List<MedicineConnect> userMedicine(DiseaseConnect vo) throws Exception {
 		// TODO Auto-generated method stub
 		return dao.userMedicine(vo);
+	}
+
+	@Override
+	public List<Detail> detailInfo(Detail vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.detailInfo(vo);
+	}
+
+	@Override
+	public void detailUpdate(Detail vo) throws Exception {
+		// TODO Auto-generated method stub
+		dao.detailUpdate(vo);
+	}
+
+	@Override
+	public void detailInsert(Detail vo) throws Exception {
+		// TODO Auto-generated method stub
+		dao.detailInsert(vo);
+	}
+
+	@Override
+	public void detailDelete(Detail vo) throws Exception {
+		// TODO Auto-generated method stub
+		dao.detailDelete(vo);
+	}
+
+	@Override
+	public List<ProtectorTel> protectInfo(ProtectorTel vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.protectInfo(vo);
+	}
+
+	@Override
+	public void protectUpdate(ProtectorTel vo) throws Exception {
+		// TODO Auto-generated method stub
+		dao.protectUpdate(vo);
+	}
+
+	@Override
+	public void protectInsert(ProtectorTel vo) throws Exception {
+		// TODO Auto-generated method stub
+		dao.protectInsert(vo);
+	}
+
+	@Override
+	public void protectDelete(ProtectorTel vo) throws Exception {
+		// TODO Auto-generated method stub
+		dao.protectDelete(vo);
 	}
 
 	
