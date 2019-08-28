@@ -25,7 +25,6 @@ public class DetailInfo {
     	JSONObject json = new JSONObject();
     	System.out.println(test.getUserNum());
     	List<Detail> list;
-    	int i=0; //디테일 리스트 수  
 		try {
 			list = service.detailInfo(test);
 			System.out.println("디테일 리스트 불러오기 성공");

@@ -35,6 +35,12 @@
 		from protectorTel
 		where userNum = #{userNum};
     </select>
+    <!--보호자  select TestBean-->
+    <select id = 'protectTest' resultType="ProtectorTel">
+		select * 
+		from protectorTel
+		where userNum = #{userNum};
+    </select>
     
     <!--디테일 삭제 -->
     <delete id = "detailDelete">
@@ -58,6 +64,13 @@
 		from detail
 		where userNum = #{userNum};
     </select>
+     <!--디테일  select testbean-->
+    <select id = 'detailTest' resultType="Detail">
+		select * 
+		from detail
+		where userNum = #{userNum};
+    </select>
+    
     <!--약 리스트 -->
     <select id = 'userMedicine' resultType="MedicineConn">
 		select mc.userNum,mc.diseaseCode,d.disease,mc.medicineCode,m.medicine
@@ -71,14 +84,19 @@
 		 from diseaseConn dc, disease d
 		 where d.diseaseCode = dc.diseaseCode and dc.userNum = #{userNum};
     </select>
+    <update id="passwordUpdate">
+		update userinfo 
+		set password = #{password} 
+		where email = #{email};
+    </update>
     
 	<select id='user_db' resultType="Userinfo">
 		 select * from userinfo;
 	</select>
 	
 	<insert id="user_insert">
-	     insert into userinfo(email,name,phone,password,birth,hospital)
-	     values(#{email},#{name},#{phone},#{password},#{birth},#{hospital});
+	     insert into userinfo(email,name,phone,password,birth,hospital,salt)
+	     values(#{email},#{name},#{phone},#{password},#{birth},#{hospital},#{salt});
 	</insert>
 	
 	<select id='user_login' resultType="Userinfo">
@@ -93,14 +111,17 @@
 		 select * from userinfo where email = #{email};
 	</select>
 	
-	<update id="update_detail">
-		update userinfo set disease1 = #{disease1},
-		disease2 = #{disease2}, disease3 = #{disease3}, disease4 = #{disease4}, disease5 = #{disease5},
-		medicine1 = #{medicine1}, medicine2 = #{medicine2}, medicine3 = #{medicine3}, medicine4 = #{medicine4}, medicine5 = #{medicine5},
-		weight = #{weight},
-		hospital = #{hospital},
-		around1 = #{around1}, around2 = #{around2}, around3 = #{around3}, around4 = #{around4}, around5 = #{around5} where email = #{email};
+	<update id="userInfoUpdate">
+		update userinfo 
+		set name = #{name}, phone=#{phone}, birth=#{birth} 
+		where userNum = #{userNum};
 	</update>
+	<!--이메일과 생년월일 체크 -->
+	<select id='emailBirthCheak' resultType="Userinfo">
+		 select * 
+		 from userinfo 
+		 where email = #{email} and birth = #{birth} ;
+	</select>
 	
 	<update id="email_send">
 		update userinfo set 

@@ -46,9 +46,9 @@ public class TestDAOImpl implements TestDAO{//사용할 *Mapper.xml의 namespace명
 		return sqlSession.selectList(namespace+".emailoverlap",vo);
 	}
 	@Override
-	public void update_detail(TestBean vo) throws Exception {
+	public void userInfoUpdate(TestBean vo) throws Exception {
 		// TODO Auto-generated method stub
-		sqlSession.update(namespace+".update_detail", vo);
+		sqlSession.update(namespace+".userInfoUpdate", vo);
 	}
 	@Override
 	public void email_send(TestBean vo) throws Exception {
@@ -104,6 +104,26 @@ public class TestDAOImpl implements TestDAO{//사용할 *Mapper.xml의 namespace명
 	public void protectDelete(ProtectorTel vo) throws Exception {
 		// TODO Auto-generated method stub
 		sqlSession.delete(namespace+".protectDelete", vo);
+	}
+	@Override
+	public void passwordUpdate(TestBean vo) throws Exception {
+		// TODO Auto-generated method stub
+		sqlSession.update(namespace+".passwordUpdate", vo);
+	}
+	@Override
+	public List<TestBean> emailBirthCheak(TestBean vo) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(namespace+".emailBirthCheak", vo);
+	}
+	@Override
+	public List<Detail> detailTest(TestBean vo) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(namespace+".detailTest", vo);
+	}
+	@Override
+	public List<ProtectorTel> protectTest(TestBean vo) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(namespace+".protectTest", vo);
 	}
 	
 	

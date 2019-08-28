@@ -10,6 +10,8 @@ public class TestBean {
 	private String phone;
 	private String birth;
 	private String hospital;
+	private String salt;
+	private String passwordNew;
 	
 	
 	/////////////////////////////
@@ -54,6 +56,18 @@ public class TestBean {
 	}
 	public void setHospital(String hospital) {
 		this.hospital = hospital;
+	}
+	public String getSalt() {
+		return salt;
+	}
+	public void setSalt(String salt) {
+		this.salt = salt;
+	}
+	public String getPasswordNew() {
+		return passwordNew;
+	}
+	public void setPasswordNew(String passwordNew) {
+		this.passwordNew = passwordNew;
 	}
 	
 	

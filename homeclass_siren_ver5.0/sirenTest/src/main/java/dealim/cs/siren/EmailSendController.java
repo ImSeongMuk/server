@@ -3,6 +3,7 @@ package dealim.cs.siren;
 import javax.inject.Inject;
 import javax.mail.internet.MimeMessage;
 
+import java.util.List;
 import java.util.UUID; 
 
 import org.json.simple.JSONObject;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import dealim.cs.siren.bean.TestBean;
 import dealim.cs.siren.sevice.TestService;
+import dealim.cs.siren.sha256.SHA256Util;
 
 @Controller
 public class EmailSendController {
@@ -41,23 +43,41 @@ public class EmailSendController {
 		String tomail = test.getEmail();	// request.getParameter("tomail"); // 받는 사람 이메일
 		String title = "삐용삐용 임시 비밀번호";	// request.getParameter("title"); // 제목
 		String content = "임시 비밀번호는 "+uuid+" 입니다."; // 내용
-		test.setPassword(uuid);
+		List<TestBean> listInfo;
+		List<TestBean> listCheak;
 		
 		try {
-			MimeMessage message = mailSender.createMimeMessage();
-			MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
+			listCheak = service.emailBirthCheak(test);
+			if(!listCheak.isEmpty()) {// 이메일과 생년월일이 일치할때(null x)
+				 
+				String salt = null;
+				listInfo = service.userinfo(test);
+				for(TestBean listinfo : listInfo) {// 유저 정보에서 salt를 가져와서 넣는다
+					salt = listinfo.getSalt();
+				}
+		    	String password = SHA256Util.getEncrypt(uuid,salt);//임시 비밀번호와 난수를 사용하여 비밀번호를 암호화
+		    	test.setPassword(password);//암호화된 비밀번호를 다시 입력
+				
+				MimeMessage message = mailSender.createMimeMessage();
+				MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
 
-			messageHelper.setFrom(setfrom); // 보내는사람 생략하거나 하면 정상작동을 안함
-			messageHelper.setTo(tomail); // 받는사람 이메일
-			messageHelper.setSubject(title); // 메일제목은 생략이 가능하다
-			messageHelper.setText(content); // 메일 내용
+				messageHelper.setFrom(setfrom); // 보내는사람 생략하거나 하면 정상작동을 안함
+				messageHelper.setTo(tomail); // 받는사람 이메일
+				messageHelper.setSubject(title); // 메일제목은 생략이 가능하다
+				messageHelper.setText(content); // 메일 내용
 
-			mailSender.send(message);
+				mailSender.send(message);
+				
+				service.email_send(test);
+	        	json.put("result","T");
+	        	
+				System.out.println("email success");
+				
+			}
+			else {// 이메일과 생년월일이 일치 하지 않을때(null)
+				json.put("result","F");
+			}
 			
-			service.email_send(test);
-        	json.put("result","T");
-        	
-			System.out.println("email success");
 		} catch (Exception e) {
 			System.out.println(e);
 			System.out.println("email fail");

@@ -51,9 +51,9 @@ public class TestServiceImpl implements TestService {
 	}
 
 	@Override
-	public void update_detail(TestBean vo) throws Exception {
+	public void userInfoUpdate(TestBean vo) throws Exception {
 		// TODO Auto-generated method stub
-		dao.update_detail(vo);
+		dao.userInfoUpdate(vo);
 	}
 
 	@Override
@@ -120,6 +120,30 @@ public class TestServiceImpl implements TestService {
 	public void protectDelete(ProtectorTel vo) throws Exception {
 		// TODO Auto-generated method stub
 		dao.protectDelete(vo);
+	}
+
+	@Override
+	public void passwordUpdate(TestBean vo) throws Exception {
+		// TODO Auto-generated method stub
+		dao.passwordUpdate(vo);
+	}
+
+	@Override
+	public List<TestBean> emailBirthCheak(TestBean vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.emailBirthCheak(vo);
+	}
+
+	@Override
+	public List<Detail> detailTest(TestBean vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.detailTest(vo);
+	}
+
+	@Override
+	public List<ProtectorTel> protectTest(TestBean vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.protectTest(vo);
 	}
 
 	
