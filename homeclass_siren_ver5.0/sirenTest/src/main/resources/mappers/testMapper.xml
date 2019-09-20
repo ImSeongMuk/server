@@ -10,7 +10,7 @@
 		이렇게 해야 한다. -->
 	<!-- 알람 리스트 insert -->
 	<insert id="alarmInsert">
-		insert into AlarmList(userNum,time,receiverList)
+		insert into AlarmList(userNum,time,receiverList) 
 		values(#{userNum},#{time},#{receiverList});
 	</insert>
 	
