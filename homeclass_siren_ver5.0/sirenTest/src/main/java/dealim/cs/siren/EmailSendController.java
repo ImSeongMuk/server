@@ -22,7 +22,6 @@ import dealim.cs.siren.sha256.SHA256Util;
 
 @Controller
 public class EmailSendController {
-	
 	@Inject
 	TestService service;
 	

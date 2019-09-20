@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dealim.cs.siren.mappers.testMapper">
+
+	<!-- mybatis-config.xml의 typeAlias에 등록해두지 않았다면 <select id="selectMember" 
+		resultType="com.example.dto.MemberVO" > SELECT ID, PW ,NAME FROM TEST </select> 
+		이렇게 해야 한다. -->
+	<!-- 알람 리스트 insert -->
+	<insert id="alarmInsert">
+		insert into AlarmList(userNum,alarmCode,time,receiverList)
+		values(#{userNum},#{alarmCode},#{time},#{receiverList});
+	</insert>
+	
+	<!-- 알람 리스트 delete -->
+	<delete id="alarmDelete">
+		delete from AlarmList
+		where userNum = #{userNum} and alarmCode
+		=#{alarmCode};
+	</delete>
+	
+	<!-- 알람 리스트 select -->
+	<select id='alarmInfo' resultType="AlarmList">
+		select *
+		from AlarmList
+		where userNum = #{userNum};
+	</select>
+	
+	<!--보호자 삭제 -->
+	<delete id="protectDelete">
+		delete from protectorTel
+		where userNum = #{userNum} and protectCode
+		=#{protectCode};
+	</delete>
+	
+	<!--보호자 수정 -->
+	<update id="protectUpdate">
+		update protectorTel set
+		protectName = #{protectName} , protectRelation = #{protectRelation}, protectPhone
+		= #{protectPhone}
+		where userNum = #{userNum} and protectCode =
+		#{protectCode};
+	</update>
+	
+	<!--보호자 추가 -->
+	<insert id="protectInsert">
+		insert into protectorTel(userNum,protectName,protectRelation,protectPhone)
+		values(#{userNum},#{protectName},#{protectRelation},#{protectPhone});
+	</insert>
+	
+	<!--보호자 select -->
+	<select id='protectInfo' resultType="ProtectorTel">
+		select *
+		from protectorTel
+		where userNum = #{userNum};
+	</select>
+	
+	<!--보호자 select TestBean -->
+	<select id='protectTest' resultType="ProtectorTel">
+		select *
+		from protectorTel
+		where userNum = #{userNum};
+	</select>
+
+	<!--디테일 삭제 -->
+	<delete id="detailDelete">
+		delete from detail
+		where userNum = #{userNum} and detailCode =#{detailCode};
+	</delete>
+	
+	<!--디테일 수정 -->
+	<update id="detailUpdate">
+		update detail set
+		diseaseName = #{diseaseName} , detailContent = #{detailContent}
+		where userNum =
+		#{userNum} and detailCode = #{detailCode};
+	</update>
+	
+	<!--디테일 추가 -->
+	<insert id="detailInsert">
+		insert into detail(userNum,diseaseName,detailContent)
+		values(#{userNum},#{diseaseName},#{detailContent});
+	</insert>
+	
+	<!--디테일 select -->
+	<select id='detailInfo' resultType="Detail">
+		select *
+		from detail
+		where userNum = #{userNum};
+	</select>
+	
+	<!--디테일 select testbean -->
+	<select id='detailTest' resultType="Detail">
+		select *
+		from detail
+		where userNum = #{userNum};
+	</select>
+
+	<!--약 리스트 -->
+	<select id='userMedicine' resultType="MedicineConn">
+		select
+		mc.userNum,mc.diseaseCode,d.disease,mc.medicineCode,m.medicine
+		from
+		medicineConn mc, medicine m ,disease d
+		where mc.medicineCode=m.medicineCode and mc.userNum = #{userNum} and
+		mc.diseaseCode = #{diseaseCode} and d.diseaseCode = mc.diseaseCode ;
+	</select>
+	
+	<!--병 리스트 -->
+	<select id='userDisease' resultType="DiseaseConn">
+		select dc.userNum,d.diseaseCode,d.disease
+		from diseaseConn dc, disease d
+		where d.diseaseCode = dc.diseaseCode and dc.userNum = #{userNum};
+	</select>
+	
+	<update id="passwordUpdate">
+		update userinfo
+		set password = #{password}
+		where email = #{email};
+	</update>
+
+	<select id='user_db' resultType="Userinfo">
+		select * from userinfo;
+	</select>
+
+	<insert id="user_insert">
+		insert into userinfo(email,name,phone,password,birth,hospital,salt)
+		values(#{email},#{name},#{phone},#{password},#{birth},#{hospital},#{salt});
+	</insert>
+
+	<select id='user_login' resultType="Userinfo">
+		select * from userinfo where email = #{email} and password = #{password};
+	</select>
+
+	<select id='userinfo' resultType="Userinfo">
+		select * from userinfo where email = #{email};
+	</select>
+
+	<select id='emailoverlap' resultType="Userinfo">
+		select * from userinfo where email = #{email};
+	</select>
+
+	<update id="userInfoUpdate">
+		update userinfo
+		set name = #{name}, phone=#{phone}, birth=#{birth}
+		where userNum = #{userNum};
+	</update>
+	<!--이메일과 생년월일 체크 -->
+	<select id='emailBirthCheak' resultType="Userinfo">
+		select *
+		from userinfo
+		where email = #{email} and birth = #{birth} ;
+	</select>
+	
+	<update id="email_send">
+		update userinfo set
+		password = #{password}
+		where email = #{email} and birth = #{birth};
+	</update>
+
+
+
+</mapper>

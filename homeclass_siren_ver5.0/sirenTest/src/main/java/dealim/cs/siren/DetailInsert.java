@@ -16,23 +16,24 @@ import dealim.cs.siren.sevice.TestService;
 public class DetailInsert {
 	@Inject
 	TestService service;
-	@RequestMapping(value="/detailInsert",method= {RequestMethod.GET,RequestMethod.POST})
-    public @ResponseBody JSONObject tester(@RequestBody Detail test) throws Exception{ 
-    	JSONObject json = new JSONObject();
-    	System.out.println(test.getUserNum());
-    	
+
+	@RequestMapping(value = "/detailInsert", method = { RequestMethod.GET, RequestMethod.POST })
+	public @ResponseBody JSONObject tester(@RequestBody Detail test) throws Exception {
+		JSONObject json = new JSONObject();
+		System.out.println(test.getUserNum());
+
 		try {
 			service.detailInsert(test);
 			System.out.println("user detail insert success");
-			json.put("result","T");
+			json.put("result", "T");
 			System.out.println("성공");
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
-			json.put("result","F");
+			json.put("result", "F");
 			System.out.println("실패");
 		}
-		
-        return json;
-    }
+
+		return json;
+	}
 }

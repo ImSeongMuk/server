@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+    
+<configuration>
+	<typeAliases>
+		<typeAlias alias="Userinfo" type="dealim.cs.siren.bean.TestBean" />
+		<typeAlias alias="DiseaseConn" type="dealim.cs.siren.bean.DiseaseConnect" />
+		<typeAlias alias="MedicineConn" type="dealim.cs.siren.bean.MedicineConnect" />
+		<typeAlias alias="Detail" type="dealim.cs.siren.bean.Detail" />
+		<typeAlias alias="ProtectorTel" type="dealim.cs.siren.bean.ProtectorTel" />
+	</typeAliases>
+</configuration>

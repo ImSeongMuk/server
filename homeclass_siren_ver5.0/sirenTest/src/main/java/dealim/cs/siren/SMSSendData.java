@@ -1,5 +1,7 @@
 package dealim.cs.siren;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -14,7 +16,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import dealim.cs.siren.bean.Detail;
 import dealim.cs.siren.bean.ProtectorTel;
 import dealim.cs.siren.bean.TestBean;
+import dealim.cs.siren.bean.AlarmList;
 import dealim.cs.siren.sevice.TestService;
+
 
 @Controller
 public class SMSSendData {
@@ -27,18 +31,41 @@ public class SMSSendData {
     	List<ProtectorTel> listProtect;
     	List<Detail> listDetail;
     	List<TestBean> listTestBean;
+    	AlarmList alarmList = new AlarmList();
     	
-    	
+    	String alarm = "";
 		try {
 			//보호자 연락쳐 가져오기
+			int userNum = 0;
 			listProtect = service.protectTest(test);
 			if(!listProtect.isEmpty()) {
 				json.put("protect",listProtect);
 				json.put("result","T");
+				int count =0;
+				for (ProtectorTel list : listProtect) {
+					alarm = alarm + list.getProtectName()+",";
+					if(count == 0) {
+						userNum = list.getUserNum();
+					}
+					count++;
+				}
+				alarm = alarm.substring(0,alarm.length()-2);
 			}
 			else {
 				json.put("result","null");
 			}
+			
+			//
+			SimpleDateFormat nowTime= new SimpleDateFormat ( "yyyy년 MM월dd일 HH시mm분ss초");
+			Date time = new Date();
+			String insertTime = nowTime.format(time);
+			
+			alarmList.setUserNum(userNum);
+			alarmList.setAlarmCode("test");
+			alarmList.setTime(insertTime);
+			alarmList.setReceiverList(alarm);
+			
+			service.alarmInsert(alarmList);
 			
 			//세부사항 정보 가져오기
 			listDetail = service.detailTest(test);

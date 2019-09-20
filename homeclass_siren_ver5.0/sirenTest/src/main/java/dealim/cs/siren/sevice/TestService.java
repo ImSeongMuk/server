@@ -6,7 +6,7 @@ import dealim.cs.siren.bean.DiseaseConnect;
 import dealim.cs.siren.bean.MedicineConnect;
 import dealim.cs.siren.bean.Detail;
 import dealim.cs.siren.bean.ProtectorTel;
-
+import dealim.cs.siren.bean.AlarmList;
 
 public interface TestService {
 	public List<TestBean> user_db() throws Exception;
@@ -39,4 +39,8 @@ public interface TestService {
 	public void protectDelete(ProtectorTel vo) throws Exception;
 	public List<ProtectorTel> protectTest(TestBean vo) throws Exception;
 	
+	//// ¾Ë¶÷ 
+	public List<AlarmList> alarmInfo(AlarmList vo) throws Exception;
+	public void alarmInsert(AlarmList vo) throws Exception;
+	public void alarmDelete(AlarmList vo) throws Exception;
 }

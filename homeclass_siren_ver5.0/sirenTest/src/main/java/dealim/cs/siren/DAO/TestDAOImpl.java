@@ -9,6 +9,7 @@ import dealim.cs.siren.bean.DiseaseConnect;
 import dealim.cs.siren.bean.MedicineConnect;
 import dealim.cs.siren.bean.ProtectorTel;
 import dealim.cs.siren.bean.TestBean;
+import dealim.cs.siren.bean.AlarmList;
 import dealim.cs.siren.bean.Detail;
 
 @Repository//DAO를 스프링에 인식 시킴 //DAO라고 명시 (DAO를 스프링에서 인식시켜줌)
@@ -124,6 +125,19 @@ public class TestDAOImpl implements TestDAO{//사용할 *Mapper.xml의 namespace명
 	public List<ProtectorTel> protectTest(TestBean vo) throws Exception {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(namespace+".protectTest", vo);
+	}
+	@Override
+	public List<AlarmList> alarmInfo(AlarmList vo) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(namespace+".alarmInfo", vo);
+	}
+	@Override
+	public void alarmInsert(AlarmList vo) throws Exception {
+		sqlSession.insert(namespace+".alarmInsert", vo);
+	}
+	@Override
+	public void alarmDelete(AlarmList vo) throws Exception {
+		sqlSession.delete(namespace+".alarmDelete", vo);
 	}
 	
 	

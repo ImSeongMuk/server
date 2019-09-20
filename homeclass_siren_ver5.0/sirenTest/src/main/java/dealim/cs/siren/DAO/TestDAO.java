@@ -6,6 +6,7 @@ import dealim.cs.siren.bean.DiseaseConnect;
 import dealim.cs.siren.bean.MedicineConnect;
 import dealim.cs.siren.bean.Detail;
 import dealim.cs.siren.bean.ProtectorTel;
+import dealim.cs.siren.bean.AlarmList;
 
 public interface TestDAO {
 	public List<TestBean> user_db() throws Exception;
@@ -41,6 +42,10 @@ public interface TestDAO {
 	public void protectInsert(ProtectorTel vo) throws Exception; 
 	public void protectDelete(ProtectorTel vo) throws Exception; 
 	public List<ProtectorTel> protectTest(TestBean vo) throws Exception;
+	//// 알람
+	public List<AlarmList> alarmInfo(AlarmList vo) throws Exception;
+	public void alarmInsert(AlarmList vo) throws Exception; 
+	public void alarmDelete(AlarmList vo) throws Exception; 
 }
 
 //TestDAO 인터페이스에서 DB값을 출력해줄 메소드명을 입력해줍니다.

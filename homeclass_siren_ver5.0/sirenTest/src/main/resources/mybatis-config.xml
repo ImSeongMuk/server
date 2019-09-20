@@ -10,5 +10,6 @@
 		<typeAlias alias="MedicineConn" type="dealim.cs.siren.bean.MedicineConnect" />
 		<typeAlias alias="Detail" type="dealim.cs.siren.bean.Detail" />
 		<typeAlias alias="ProtectorTel" type="dealim.cs.siren.bean.ProtectorTel" />
+		<typeAlias alias="AlarmList" type="dealim.cs.siren.bean.AlarmList" />
 	</typeAliases>
 </configuration>
